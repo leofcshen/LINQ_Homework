@@ -105,18 +105,17 @@ namespace LinQ_Homework
         bool flag = true;
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show(bindingSource1.Position.ToString());//不知道為啥會跑3次
             try
-            {
-                //if (flag)
-                //{
-                //    var qq = from ss in nwDataSet1.Order_Details
-                //             where ss.OrderID == 10248
-                //             select ss;
-                //    flag = !flag;
-                //    dataGridView2.DataSource = qq.ToList();
-                //    return;
-                //}
+            {                
+                if (flag)
+                {
+                    var qq = from ss in nwDataSet1.Order_Details
+                             where ss.OrderID == 10248
+                             select ss;
+                    flag = !flag;
+                    dataGridView2.DataSource = qq.ToList();
+                    return;
+                }
                 int a = (int)dataGridView1.Rows[bindingSource1.Position].Cells["OrderID"].Value;
                 var q = from ss in nwDataSet1.Order_Details
                         where ss.OrderID == a

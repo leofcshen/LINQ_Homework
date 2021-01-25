@@ -21,3 +21,10 @@ D:\Github\LinQ_Homework\LinQ_Homework\obj\Debug\LinQ_Homework.csproj.CoreCompile
 D:\Github\LinQ_Homework\LinQ_Homework\obj\Debug\LinQ_Homework.exe
 D:\Github\LinQ_Homework\LinQ_Homework\obj\Debug\LinQ_Homework.pdb
 D:\Github\LinQ_Homework\LinQ_Homework\obj\Debug\LinQ_Homework.Frm作業_3.resources
+D:\Github\LINQ_Homework\LinQ_Homework\bin\Debug\EntityFramework.dll
+D:\Github\LINQ_Homework\LinQ_Homework\bin\Debug\EntityFramework.SqlServer.dll
+D:\Github\LINQ_Homework\LinQ_Homework\bin\Debug\EntityFramework.xml
+D:\Github\LINQ_Homework\LinQ_Homework\bin\Debug\EntityFramework.SqlServer.xml
+D:\Github\LINQ_Homework\LinQ_Homework\bin\Debug\zh-Hant\EntityFramework.resources.dll
+D:\Github\LINQ_Homework\LinQ_Homework\obj\Debug\LinQ_Homework.csproj.CopyComplete
+D:\Github\LINQ_Homework\LinQ_Homework\obj\Debug\LinQ_Homework.Frm考試.resources

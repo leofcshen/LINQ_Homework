@@ -13,10 +13,12 @@ namespace LinQ_Homework
 {
     public partial class Frm作業_3 : Form
     {
+        NorthwindEntities nwEntities = new NorthwindEntities();
         public Frm作業_3()
         {
             InitializeComponent();
             this.ordersTableAdapter1.Fill(this.nwDataSet1.Orders);
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -240,18 +242,47 @@ namespace LinQ_Homework
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            this.order_DetailsTableAdapter1.Fill(this.nwDataSet1.Order_Details);
-            var q = from od in nwDataSet1.Order_Details
-                    select new { od.ProductID,od.UnitPrice,od.Quantity, TotalPrice = od.UnitPrice * od.Quantity };
-            this.dataGridView1.DataSource = q.ToList();
-            MessageBox.Show(this.nwDataSet1.Order_Details.Sum(n => n.UnitPrice * n.Quantity).ToString());
+            //this.order_DetailsTableAdapter1.Fill(this.nwDataSet1.Order_Details);
+            //var q = from od in nwDataSet1.Order_Details
+            //        select new { od.ProductID,od.UnitPrice,od.Quantity, TotalPrice = od.UnitPrice * od.Quantity };
+            //this.dataGridView1.DataSource = q.ToList();
+            //MessageBox.Show(this.nwDataSet1.Order_Details.Sum(n => n.UnitPrice * n.Quantity).ToString());
+            var q = from o in nwEntities.Orders
+                    from od in o.Order_Details
+                    select (float)(od.UnitPrice * od.Quantity) * (1.0 - od.Discount);
+            MessageBox.Show($"總額：{q.Sum():c2}");
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            var q = from od in nwEntities.Order_Details.AsEnumerable()
+                    group (float)(od.UnitPrice * od.Quantity) * (1.0 - od.Discount) by od.Order.Employee.FirstName + " " + od.Order.Employee.LastName into g
+                    orderby g.Sum() descending
+                    select new
+                    {
+                        Name = g.Key,
+                        Performance = $"{g.Sum():c2}"
+                    };
+            dataGridView1.DataSource = q.Take(5).ToList();
         }
 
-        
+        private void button7_Click(object sender, EventArgs e)
+        {
+            bool flag = nwEntities.Products.Any(n => n.UnitPrice > 300);
+            MessageBox.Show("是否有單價大於300的產品：" + flag);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var q = from p in nwEntities.Products
+                    orderby p.UnitPrice descending
+                    select new
+                    {
+                        Product = p.ProductName,
+                        Category = p.Category.CategoryName,
+                        Price = p.UnitPrice
+                    };
+            dataGridView1.DataSource = q.Take(5).ToList();
+        }
     }
 }

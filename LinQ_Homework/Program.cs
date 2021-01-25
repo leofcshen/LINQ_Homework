@@ -16,10 +16,10 @@ namespace LinQ_Homework
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Frm作業_1());
+            Application.Run(new Frm作業_1());
             //Application.Run(new Frm作業_2_AdventureWorksDataSet());
             //Application.Run(new Frm作業_3());
-            Application.Run(new Frm考試());
+            //Application.Run(new Frm考試());
         }
     }
 }

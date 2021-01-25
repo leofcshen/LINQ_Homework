@@ -69,8 +69,6 @@ namespace LinQ_Homework
             var pro = from row in nwDataSet1.Products
                       select row;
             dataGridView2.DataSource = pro.Skip(showCount * pageCount).Take(showCount).ToList();
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,8 +95,7 @@ namespace LinQ_Homework
         {
             
             this.dataGridView1.DataSource = this.nwDataSet1.Orders;
-            this.dataGridView1.DataSource = this.bindingSource1;
-            
+            this.dataGridView1.DataSource = this.bindingSource1;            
             //this.dataGridView2.DataSource = this.nwDataSet1.Order_Details;
         }
 
@@ -175,7 +172,6 @@ namespace LinQ_Homework
             Frm作業_2_AdventureWorksDataSet form = new Frm作業_2_AdventureWorksDataSet();
             form.Show();
         }
-
         //int Max(int[] nums)
     }
 }
